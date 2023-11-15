@@ -64,14 +64,6 @@ rename table AritiklRacun to ArtiklRacun;
 
 
 
-CREATE TABLE mobiteli_pzi (
-ID BIGINT(13) Primary key NOT NULL auto_increment,
-NAZIV VARCHAR(200) NOT NULL,
-PROIZVODAC VARCHAR(30) NOT NULL,
-CIJENA INT(20) NOT NULL
-);
-
-INSERT INTO mobiteli_pzi(NAZIV,PROIZVODAC,CIJENA) VALUES (Galaxy S23 5G,Samsung,1300);
 
 
 
