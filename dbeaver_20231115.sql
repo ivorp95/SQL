@@ -13,4 +13,3 @@ INSERT INTO mobiteli_pzi(NAZIV,PROIZVODAC,CIJENA) VALUES ('Galaxy A54 5G','Samsu
 INSERT INTO mobiteli_pzi(NAZIV,PROIZVODAC,CIJENA) VALUES ('Iphone 15','Apple',15000);
 
 
-
