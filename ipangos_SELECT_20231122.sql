@@ -43,4 +43,18 @@ SELECT AVG(cijena*kolicina) as ProsjecnaCijenaUkupno from ArtiklRacun;
 select BrojRac, SUM(cijena*kolicina) as ukupno from ArtiklRacun group by BrojRac ; 
 #grupiranje po nekom stupcu sa group by
 
+SELECT count(NazivArtikla) from Artikli;
+SELECT count(*) from Artikli;
+#count probrojava redke u tablici
+
+
+SELECT COUNT(*) FROM Artikli where JedinicaMjere ='kom'; 
+SELECT COUNT(*) FROM Artikli where JedinicaMjere ='lit'; 
+SELECT COUNT(*) FROM Artikli where JedinicaMjere ='pak'; 
+
+select JedinicaMjere, COUNT(*) as BrojArtikla from Artikli group by JedinicaMjere; 
+#grupiranje po jedinici mjere i broju komada sa tom jedinicom mjere
+
+SELECT COUNT(DISTINCT JedinicaMjere) from Artikli ; 
+#koliko je razlicitih jedinica mjere
 
