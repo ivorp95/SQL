@@ -58,3 +58,23 @@ select JedinicaMjere, COUNT(*) as BrojArtikla from Artikli group by JedinicaMjer
 SELECT COUNT(DISTINCT JedinicaMjere) from Artikli ; 
 #koliko je razlicitih jedinica mjere
 
+
+SELECT BrojRac , MAX(iznos) as najveci,
+MIN(iznos) as najmanji, SUM(iznos) as ukupno,
+AVG(iznos) as prosjek from ArtiklRacun group by BrojRac;
+
+SELECT * FROM Racuni where DatumRac='20200403';
+
+INSERT into Artikli (NazivArtikla) values ('Lopta');
+
+SELECT NazivArtikla from Artikli WHERE JedinicaMjere  is not null;
+SELECT NazivArtikla from Artikli WHERE JedinicaMjere  is null;
+
+
+SELECT *, Kolicina+10 from ArtiklRacun where BrojRac =2 order by Kolicina asc;
+
+
+#po tome sto pise u zadatku treba zakljuciti koja je to tablica
+
+
+

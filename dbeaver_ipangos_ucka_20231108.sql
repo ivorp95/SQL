@@ -49,7 +49,7 @@ VrstaPlac varchar(24),
 Ukiznos decimal(6,2)
 );
 
-dodavanje primarnih kljuceva
+#dodavanje primarnih kljuceva
 
 ALTER table Grad add primary key(PostBr);
 ALTER table Artikli add primary key(NazivArtikla);
@@ -58,7 +58,7 @@ ALTER table Racuni add primary key(BrojRac);
 ALTER table ArtiklRacun  add primary key(BrojRac,NazivArtikla);
 
 
-dodavanje indexa
+#dodavanje indexa
 
 CREATE index KupciGradovi on Kupci(PostBr);
 CREATE index RacuniKupci on Racuni(NazivKupca);
@@ -69,7 +69,7 @@ rename table AritiklRacun to ArtiklRacun;
 
 
 
-dodavanje vanjskih kljuceva i referencijalnog integriteta
+#dodavanje vanjskih kljuceva i referencijalnog integriteta
 
 ALTER table Kupci add constraint VK_grad
 foreign key VK_grad(PostBr) references Grad(PostBr)
@@ -90,12 +90,12 @@ on DELETE cascade on UPDATE cascade;
 
 
 
-Brisanje vanjskog ključa:
+#Brisanje vanjskog ključa:
 
 ALTER TABLE ime tablice DROP FOREIGN KEY ime ključa;
 
 
-punjenje podatcima
+#punjenje podatcima
 
 INSERT INTO Grad (PostBr, Grad) values 
 (51000, 'Rijeka'),
@@ -141,25 +141,25 @@ UPDATE Racuni SET DatumRac='20181124', VrstaPlac='American'
 WHERE BrojRac=1;
 
 
-RI nad Upd:
+#RI nad Upd:
 UPDATE Grad SET PostBr=51500 WHERE PostBr=51000;
 UPDATE Grad SET PostBr=51000 WHERE PostBr=51500;
 
 
-Racunanje sa postojecim podatcima i upis u nove stupce
+#Racunanje sa postojecim podatcima i upis u nove stupce
 
 UPDATE ArtiklRacun SET Iznos=Kolicina*Cijena WHERE BrojRac=1;
 UPDATE ArtiklRacun SET Iznos=Kolicina*Cijena;
 
-brisanje nekog podatka koji se koristi kao FK nemoze se izvrsiti jer je postavljena ristrikcija
+#brisanje nekog podatka koji se koristi kao FK nemoze se izvrsiti jer je postavljena ristrikcija
 DELETE FROM Grad where Grad='Rijeka';
 
 
-mogucnost zadavanja i/ili logickih uvjeta u querry
+#mogucnost zadavanja i/ili logickih uvjeta u querry
 DELETE FROM ArtiklRacun  WHERE BrojRac=1 AND NazivArtikla='Jabuka';
 
 ----------------------------------------------------------------------
-sve ovo spada u 2.kolokvi  
+#sve ovo spada u 2.kolokvi  
 
 
 
