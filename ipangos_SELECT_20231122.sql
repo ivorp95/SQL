@@ -6,6 +6,41 @@ SELECT DISTINCT PostBr from Kupci;
 
 SELECT * from Kupci order by MatBr  desc ;
 
-select cijena from ArtiklRacun order by cijena desc;
-//sortianje po nekom atributu uzlazno ili silazno, sortiranje uvijek ide na kraj upita
+select * from ArtiklRacun order by cijena desc;
+select * from ArtiklRacun order by cijena asc;
+#sortianje po nekom atributu uzlazno ili silazno, sortiranje uvijek ide na kraj upita
+
+select * from Kupci where PostBr=51000;
+select * from Kupci where not PostBr!=51000;
+select * from Kupci where not PostBr=51000;
+#pretraga sa uijetom ili not uvijetom
+
+select * from Kupci where PostBr=21000;
+
+select * from ArtiklRacun where NazivArtikla='banane' or BrojRac=1;
+select * from ArtiklRacun where NazivArtikla='banane' and BrojRac=1;
+#moguce je dodavati dodatne logicke uvijete tipa and or
+
+#count() sum() avg() min() max()   funkcije za racunaje sa podatcima
+
+SELECT SUM(iznos) from ArtiklRacun where BrojRac =1;
+
+#promjena naziva u prikazu sa - as naziv
+SELECT SUM(iznos) as UkupanIznos from ArtiklRacun where BrojRac =1;
+
+SELECT SUM(Kolicina*Cijena) from ArtiklRacun where BrojRac =1;
+
+SELECT SUM(iznos) from ArtiklRacun where BrojRac =2;
+SELECT SUM(iznos) from ArtiklRacun;
+
+select MIN(cijena) from ArtiklRacun; 
+select MAX(cijena) from ArtiklRacun; 
+
+SELECT AVG(cijena) as prosjecnaCijena from ArtiklRacun; 
+SELECT AVG(cijena*kolicina) as ProsjecnaCijenaUkupno from ArtiklRacun; 
+
+
+select BrojRac, SUM(cijena*kolicina) as ukupno from ArtiklRacun group by BrojRac ; 
+#grupiranje po nekom stupcu sa group by
+
 
