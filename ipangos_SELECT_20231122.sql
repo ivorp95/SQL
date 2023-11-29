@@ -77,4 +77,58 @@ SELECT *, Kolicina+10 from ArtiklRacun where BrojRac =2 order by Kolicina asc;
 #po tome sto pise u zadatku treba zakljuciti koja je to tablica
 
 
+select NazivArtikla, JedinicaMjere from Artikli where NazivArtikla in (select NazivArtikla  from ArtiklRacun );
+#pretraga zajednckog atributa-- where prvog upita ide u select drugog upitnika
+
+select NazivArtikla, JedinicaMjere from Artikli where NazivArtikla not in (select NazivArtikla  from ArtiklRacun );
+
+
+#2023-11-29
+
+select PostBr, Grad from Grad where PostBr not in (select PostBr from Kupci);
+#ispisati sve gradve koji nisu u tablici kupci
+
+select * FROM Kupci where NazivKupca  in (select NazivKupca  from Racuni where BrojRac=2);
+
+
+select sum(Kolicina), sum(Cijena) 
+from ArtiklRacun where BrojRac  in 
+(select BrojRac  from Racuni where NazivKupca="Veleuciliste");
+
+
+select * from Racuni where NazivKupca  in 
+(select NazivKupca from Kupci where PostBr in 
+(select PostBr from Grad where Grad="Rijeka")
+);
+#prikazi sve o racunima za kupce koji dolaze iz rijeke 
+#(moramo preko tablice Kupci doci do tablice Grad)  - Racuni-Kupci-Grad
+
+
+
+
+select BrojRac, NazivKupca from Racuni where NazivKupca  in 
+(select NazivKupca from Kupci where PostBr in 
+(select PostBr from Grad where Grad="Zagreb")) 
+order by NazivKupca asc;
+
+
+select * from Kupci where NazivKupca in 
+(SELECT NazivKupca from Racuni where BrojRac in 
+(select BrojRac from ArtiklRacun where NazivArtikla in 
+(select NazivArtikla from Artikli where NazivArtikla="Jabuke")));
+
+
+select * from Artikli where NazivArtikla in
+(select NazivArtikla from ArtiklRacun where BrojRac in
+(select BrojRac from Racuni where NazivKupca in
+(select NazivKupca from Kupci where PostBr in 
+(select PostBr from Grad where Grad="Rijeka"))))
+order by NazivArtikla desc;
+
+select * from Artikli where NazivArtikla in
+(select NazivArtikla from ArtiklRacun where BrojRac in
+(select BrojRac from Racuni where NazivKupca in
+(select NazivKupca from Kupci where PostBr in 
+(select PostBr from Grad where Grad="Zagreb"))))
+order by NazivArtikla desc;
 
