@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-12-06T13:27:46.231Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0" etag="uPAonGf0F8x7X61eiieN" version="22.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-06T13:31:31.140Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0" etag="W2EG58s1JTigXy9zIOkG" version="22.1.5" type="github">
   <diagram name="Page-1" id="ZcCOom0ZRcwhTTcIi5ig">
     <mxGraphModel dx="972" dy="639" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" math="0" shadow="0">
       <root>
@@ -313,6 +313,9 @@
         </mxCell>
         <mxCell id="V1OTD0DoKeFT5B3Rm7D--84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="V1OTD0DoKeFT5B3Rm7D--66" target="V1OTD0DoKeFT5B3Rm7D--81">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V1OTD0DoKeFT5B3Rm7D--86" value="U određenom gradu nalazi se određen broj&lt;br&gt;hotela. Svaki hotel sastoji se od određenog&lt;br&gt;broja soba koje imaju svoju cijenu. Svaka&lt;br&gt;soba ima svoj broj. Osim toga, vode se&lt;br&gt;podaci o dostupnosti sobe i o broju kreveta&lt;br&gt;unutar nje. Za svaki hotel se vode podaci o&lt;br&gt;njegovom nazivu, broju zvjezdica koji ima i&lt;br&gt;adresi. Podaci koji opisuju grad u kojem se&lt;br&gt;hotel nalazi su: poštanski broj, naziv grada i&lt;br&gt;država" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="610" width="260" height="160" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
