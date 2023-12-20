@@ -125,6 +125,7 @@ select * from Artikli where NazivArtikla in
 (select PostBr from Grad where Grad="Rijeka"))))
 order by NazivArtikla desc;
 
+#select iz tablice s jednog kraja preko svih do drugog kraja sheme 
 select * from Artikli where NazivArtikla in
 (select NazivArtikla from ArtiklRacun where BrojRac in
 (select BrojRac from Racuni where NazivKupca in
