@@ -39,3 +39,31 @@ group by NazivKupca order by UkupanIznos desc;
 
 
 
+#prikazati broj racuna i ukupan iznos u razdoblju izmedju 01.11.2010 i 25.03.2023
+select Racuni.BrojRac, sum(iznos) as UkupanIznos from ArtiklRacun 
+left outer join Racuni on ArtiklRacun.BrojRac=Racuni.BrojRac
+where DatumRac BETWEEN '20101101' and '20230325'
+group by Racuni.BrojRac ;
+
+#prikazati sve prodane artikle i njihovu jedinicu mjere sa racuna broj 1
+select Artikli.*, BrojRac from ArtiklRacun left outer join Artikli
+on ArtiklRacun.NazivArtikla=Artikli.NazivArtikla where BrojRac=1; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
