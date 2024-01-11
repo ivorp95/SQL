@@ -50,17 +50,65 @@ select Artikli.*, BrojRac from ArtiklRacun left outer join Artikli
 on ArtiklRacun.NazivArtikla=Artikli.NazivArtikla where BrojRac=1; 
 
 
+############################################################################################################
+
+#20240110 nastavak
+
+#VIEW - pogled, tablica sastavljena od vise vanjskih (uvijek prikazuje azurirane podatke)
+
+create view KupciRi as select NazivKupca, AdresaKupca from Kupci where PostBr=51000;
+select * from KupciRi;
+
+#izmjena podataka u view-u
+create or replace view KupciRi as select NazivKupca, AdresaKupca, MatBr from Kupci where PostBr=51000;
+
+#brisanje pogleda 
+drop view KupciRi;
 
 
+create view PopisKupaca as select NazivKupca, AdresaKupca, PostBr from Kupci;
+select * from PopisKupaca ;
+drop view PopisKupaca ;
+
+create view PopisKupaca as select NazivKupca, AdresaKupca, Grad 
+from Kupci left outer join Grad on Kupci.PostBr = Grad.PostBr;
+
+#pogled koji prikazuje nazive artikala koji su prodani veleucilistu - ArtikliRacun, Racuni -- tablice
+create view PopisArtikala as select NazivArtikla from ArtiklRacun 
+left outer join Racuni on ArtiklRacun.BrojRac = Racuni.BrojRac where NazivKupca='Veleuciliste';
+
+select * from PopisArtikala;
 
 
+#pokazatii sve artikle s jedinicma mjere koji su prodani veleucilistu
+
+select Artikli.* from Racuni left outer join ArtiklRacun on Racuni.BrojRac = ArtiklRacun.BrojRac 
+left outer join Artikli on Artikli.NazivArtikla = ArtiklRacun.NazivArtikla where NazivKupca='Veleuciliste' 
+order by Artikli.NazivArtikla asc;
+
+#svi artikli koji nisu prodani veleucilistu !=   operator razlicitosti
+select Artikli.* from Racuni left outer join ArtiklRacun on Racuni.BrojRac = ArtiklRacun.BrojRac 
+left outer join Artikli on Artikli.NazivArtikla = ArtiklRacun.NazivArtikla where NazivKupca!='Veleuciliste' 
+order by Artikli.NazivArtikla asc;
+
+select * from ArtikiVeleri;
 
 
+# sa distinct kazemo da prikazuje samo razlicite atribute 
+select distinct Artikli.NazivArtikla, Artikli.JedinicaMjere  from Racuni left outer join ArtiklRacun on Racuni.BrojRac = ArtiklRacun.BrojRac 
+left outer join Artikli on Artikli.NazivArtikla = ArtiklRacun.NazivArtikla where NazivKupca='Veleuciliste' 
+order by Artikli.NazivArtikla asc;
 
 
+# promjenom Left u Right ispisujemo sve artikle, isto kao promjena redosljeda kod LOJ
+select Artikli.* from Racuni right outer join ArtiklRacun on Racuni.BrojRac = ArtiklRacun.BrojRac 
+right outer join Artikli on Artikli.NazivArtikla = ArtiklRacun.NazivArtikla 
+order by Artikli.NazivArtikla asc;
 
 
-
+#prikazi sve o kupcima koji su kupili jabuke
+select Kupci.* from Kupci left outer join Racuni on Kupci.NazivKupca = Racuni.NazivKupca 
+left outer join ArtiklRacun on ArtiklRacun.BrojRac = Racuni.BrojRac where NazivArtikla ='jabuke';
 
 
 
