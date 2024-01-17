@@ -113,5 +113,50 @@ left outer join ArtiklRacun on ArtiklRacun.BrojRac = Racuni.BrojRac where NazivA
 
 
 
+############################################################################################################
+
+#20240117 nastavak 2
+
+#pokazati naziv kupca i koliko je novaca zaradjeno po svakom kupcu i toi od najveceg prema najmanjem iznosu
+
+select NazivKupca, sum(Iznos) as UkupnaZarada from Racuni left outer join ArtiklRacun on
+Racuni.BrojRac = ArtiklRacun.BrojRac group by NazivKupca order by UkupnaZarada desc;
+
+
+#prosiriti upit i koliko je po svakom kupcu
+select Kupci.NazivKupca , sum(Iznos) as UkupnaZarada from Kupci left outer join Racuni 
+on Kupci.NazivKupca = Racuni.NazivKupca  left outer join ArtiklRacun 
+on Racuni.BrojRac = ArtiklRacun.BrojRac 
+group by Kupci.NazivKupca order by UkupnaZarada desc;
+
+
+#zamjena left u right kako bi ispisali samo gradove u kojima ima zarade
+select Grad.Grad , sum(Iznos) as UkupnaZarada from Grad right outer join Kupci 
+on Kupci.PostBr=Grad.PostBr right outer join Racuni 
+on Kupci.NazivKupca = Racuni.NazivKupca  right outer join ArtiklRacun 
+on Racuni.BrojRac = ArtiklRacun.BrojRac 
+group by Grad.Grad  order by UkupnaZarada desc;
+
+#zamjena right u left da bi dobili sve gradove
+select Grad.Grad , sum(Iznos) as UkupnaZarada from Grad left outer join Kupci 
+on Kupci.PostBr=Grad.PostBr left outer join Racuni 
+on Kupci.NazivKupca = Racuni.NazivKupca  left outer join ArtiklRacun 
+on Racuni.BrojRac = ArtiklRacun.BrojRac 
+group by Grad.Grad  order by UkupnaZarada desc;
+
+
+#sve o kupcima koji su kupili jabuke
+select Kupci.* from Kupci left outer join Racuni 
+on Kupci.NazivKupca=Racuni.NazivKupca left outer join ArtiklRacun 
+on ArtiklRacun.BrojRac=Racuni.BrojRac where NazivArtikla='Jabuke';
+
+
+#broj racuna i naziv kupca za sve kupce iz zagreba
+select Kupci.NazivKupca, Racuni.BrojRac  from Racuni right outer join Kupci 
+on Racuni.NazivKupca = Kupci.NazivKupca right outer join Grad 
+on  Grad.PostBr =Kupci.PostBr where Grad='Zagreb';
+
+
+
 
 
