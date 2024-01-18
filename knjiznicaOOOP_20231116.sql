@@ -19,4 +19,18 @@ email varchar(100) not null unique,
 lozinka varchar(50) not null
 );
 
+alter table registracijaVjezba add inicijali varchar(5);
+alter table registracijaVjezba add JMBG int(50);
+
 select * from registracijaVjezba;
+
+
+create table registracijaKolokvij(
+id int(5) auto_increment primary key not null,
+ime varchar(50) not null,
+prezime varchar(100) not null,
+grad varchar(50) not null,
+Zslova varchar(10) not null
+);
+
+select * from registracijaKolokvij;
