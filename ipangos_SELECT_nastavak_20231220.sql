@@ -156,6 +156,14 @@ select Kupci.NazivKupca, Racuni.BrojRac  from Racuni right outer join Kupci
 on Racuni.NazivKupca = Kupci.NazivKupca right outer join Grad 
 on  Grad.PostBr =Kupci.PostBr where Grad='Zagreb';
 
+#prosiriti prosli upit sa ukupnim iznosom
+select Racuni.BrojRac, Kupci.NazivKupca, sum(Iznos) as Zarada from Grad left outer join Kupci 
+on Grad.PostBr=Kupci.PostBr left outer join Racuni 
+on Racuni.NazivKupca =Kupci.NazivKupca left outer join ArtiklRacun 
+on ArtiklRacun.BrojRac  =Racuni.BrojRac;
+
+#
+
 
 
 

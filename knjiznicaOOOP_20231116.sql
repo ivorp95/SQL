@@ -7,7 +7,16 @@ lozinka varchar(70) not null
 );
 
 
-select * from registracija;
+select * from registracija ;
 
-SELECT * from registracija WHERE brojMob=0912016999;
+SELECT * from registracija WHERE brojMob=2 OR ime='Pero';
 
+
+create table registracijaVjezba(
+id int(5) auto_increment primary key not null,
+korisnikIme varchar(50) not null unique,
+email varchar(100) not null unique,
+lozinka varchar(50) not null
+);
+
+select * from registracijaVjezba;
