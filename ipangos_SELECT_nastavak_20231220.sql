@@ -162,9 +162,77 @@ on Grad.PostBr=Kupci.PostBr left outer join Racuni
 on Racuni.NazivKupca =Kupci.NazivKupca left outer join ArtiklRacun 
 on ArtiklRacun.BrojRac  =Racuni.BrojRac;
 
-#
+#############################################################################
+
+#20240125 nastavak i TRIGGERI
+
+# before trigger je za naredbe koje rade u istoj tablici
+# after trigger je za naredbe koje rade na drugim tablicama a ovise o nekom unosu 
 
 
+#Triger za insert u ArtiklRacun izracunava iznos 
+create trigger B_I_ArtiklRacun before insert on ArtiklRacun for each row set new.Iznos=new.Kolicina*new.Cijena;
+
+insert into ArtiklRacun(BrojRac,NazivArtikla,Kolicina, Cijena) values 
+(2,'Kosulja',33,25);
+
+delete from ArtiklRacun where NazivArtikla='Lopta';
+
+
+#Trigger za update u ArtiklRacun
+create trigger B_U_ArtiklRacun before update on ArtiklRacun for each row set new.Iznos=new.Kolicina*new.Cijena;
+
+
+
+
+# after Trigger insert
+
+delimiter |
+|
+create trigger A_I_ArtiklRacun after insert on ArtiklRacun for each row 
+
+begin
+	
+	declare Local_UKiznos decimal(10.2);
+	select sum(Iznos) into Local_UKiznos from ArtiklRacun where BrojRac=new.BrojRac;
+	update Racuni set UKiznos=local_UKiznos where BrojRac=new.BrojRac;
+
+
+
+
+end 
+|
+delimiter ;
+
+
+
+
+insert into ArtiklRacun(BrojRac,NazivArtikla,Kolicina, Cijena) values 
+(1,'Lopta',10,250);
+
+
+
+
+
+
+# after Trigger update
+
+delimiter |
+|
+create trigger A_U_ArtiklRacun after update on ArtiklRacun for each row 
+
+begin
+	
+	declare Local_UKiznos decimal(10.2);
+	select sum(Iznos) into Local_UKiznos from ArtiklRacun where BrojRac=new.BrojRac;
+	update Racuni set UKiznos=local_UKiznos where BrojRac=new.BrojRac;
+
+
+
+
+end 
+|
+delimiter ;
 
 
 
