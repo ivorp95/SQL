@@ -71,7 +71,12 @@ select Artikl.* from Artikl where Artikl.ID_artikla
 in (select ID_artikla from Stavka_narudzbe where ID_narudzbe 
 in (select ID_narudzbe from Narudzba where ID_narudzbe != 10) );
 
+#sva prezimena skladistara
+select Skladistar.Ime_skladistara from Skladistar ;
 
+select unique Skladistar.Prezime_skladistara from Skladistar ;
+
+select Skladistar.Ime_skladistara from Skladistar where Prezime_skladistara != 'Babic';
 
 
 
